@@ -42,6 +42,15 @@ pipeline {
                                }
                            }
 
+             stage('JUnit / Mockito Tests') {
+                                                 steps {
+                                                     script {
+                                                         def mavenCmd = 'mvn test'
+                                                         sh mavenCmd
+                                                     }
+                                                 }
+                                             }
+
 
 
     }
