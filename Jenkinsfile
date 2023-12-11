@@ -5,7 +5,7 @@ pipeline {
         stage('GIT') {
             steps {
                 script {
-                    git branch: 'master', credentialsId: 'Git_Token', url: 'https://github.com/medomrani8/Devops.git'
+                    git branch: 'master', credentialsId: 'Git_Token', url: 'https://github.com/medomrani8/RDevops.git'
                 }
             }
         }
