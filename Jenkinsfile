@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    environment {
+            DOCKERHUB_CREDENTIALS = credentials('dockerhub-aziz')
+             SONAR_TOKEN = credentials('Sonar_Token')
+        }
 
     stages {
         stage('GIT') {
@@ -32,5 +36,18 @@ pipeline {
                 }
             }
 
+            stage('SonarQube') {
+                        steps {
+                            script {
+                                def mavenCmd = "mvn verify sonar:sonar -Dsonar.login=$SONAR_TOKEN"
+                                sh mavenCmd
+                            }
+                        }
+                    }
+
+
+
+
     }
+
 }
