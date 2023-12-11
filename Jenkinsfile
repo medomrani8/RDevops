@@ -51,6 +51,20 @@ pipeline {
                                                  }
                                              }
 
+             stage('Build docker image') {
+                         steps {
+                             dir('DevOps_Project') {
+                                 sh " sudo docker build -t medomrani8/eventsProject-1.0.0 ."
+                             }
+                         }
+                     }
+
+                     stage('login to dockerhub') {
+                         steps {
+                             sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                         }
+                     }
+
 
 
     }
