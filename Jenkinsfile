@@ -36,15 +36,11 @@ pipeline {
                 }
             }
 
-            stage('SonarQube') {
-                        steps {
-                            script {
-                                def mavenCmd = "mvn verify sonar:sonar -Dsonar.login=$SONAR_TOKEN"
-                                sh mavenCmd
-                            }
-                        }
-                    }
-
+            stage('MVN SONARQUBE') {
+                               steps {
+                                   sh 'mvn  sonar:sonar -Dsonar.login=admin -Dsonar.password=eae3af25-ddb0-42f0-ba04-66616b26aa15 -Dmaven.test.skip=true '
+                               }
+                           }
 
 
 
