@@ -54,7 +54,7 @@ pipeline {
              stage('Build docker image') {
                          steps {
                              dir('DevOps_Project') {
-                                 sh "docker build -t medomrani8/eventsProject-1.0.0 ."
+                                 sh "docker build -t medomrani8/eventsproject-1.0.0 ."
                              }
                          }
                      }
