@@ -55,16 +55,10 @@ pipeline {
                              sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                          }
                      }
-             stage('Build docker image') {
-                         steps {
-
-                                 sh "docker build -t medomrani8/eventsproject:1.0.0 ."
-
-                         }
-                     }
+             
         stage('push image') {
             steps {
-                sh 'sudo docker push medomrani8/devops_project:1.0'
+                sh 'docker push medomrani8/eventsproject:1.0.0'
             }
         }
 
