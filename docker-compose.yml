@@ -4,6 +4,7 @@ services:
     image: postgres:latest
     restart: unless-stopped
     environment:
+      POSTGRES_PASSWORD: iheb
       POSTGRES_USER: myuser
       POSTGRES_DB: devops
     ports:
@@ -33,4 +34,3 @@ volumes:
 
 networks:
   SpringNetwork:
-  
