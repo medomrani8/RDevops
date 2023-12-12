@@ -1,0 +1,33 @@
+version: '3'
+services:
+  postgresdb:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_DB: devops
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - SpringNetwork
+
+
+  SpringEvents:
+    image: medomrani8/eventsproject:1.0.0
+    ports:
+      - 8087:8087
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/devops
+      SPRING_DATASOURCE_USERNAME: myuser
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://postgresdb:5432" ]
+      interval: 10s
+      retries: 5
+    networks:
+      - SpringNetwork
+volumes:
+  db:
+networks:
+  SpringNetwork:
