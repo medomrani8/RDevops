@@ -58,11 +58,15 @@ pipeline {
              stage('Build docker image') {
                          steps {
 
-                                 sh "docker build -t medomrani8/eventsproject-1.0.0 --build-arg SPRING_PROFILES_ACTIVE=local ."
+                                 sh "docker build -t medomrani8/eventsproject:1.0.0 --build-arg SPRING_PROFILES_ACTIVE=local ."
 
                          }
                      }
-
+        stage('push image') {
+            steps {
+                sh 'sudo docker push medomrani8/devops_project:1.0'
+            }
+        }
 
 
 
