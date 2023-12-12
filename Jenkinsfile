@@ -55,7 +55,6 @@ pipeline {
                          steps {
 
                                  sh "docker build -t medomrani8/eventsproject-1.0.0 --build-arg SPRING_PROFILES_ACTIVE=local ."
-"
 
                          }
                      }
