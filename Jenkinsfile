@@ -73,6 +73,18 @@ pipeline {
                                      sh 'docker compose up -d'
                                  }
                              }
+             stage('Email Notification') {
+                 steps {
+                     script {
+                         emailext(
+                             attachLog: true,
+                             subject: "Build Report - ${currentBuild.result}",
+                             body: "Jenkins pipeline has finished. Result: ${currentBuild.result}\n\nConsole Output:\n${BUILD_URL}console",
+                             to: "medomrani8@gmail.com"
+                         )
+                     }
+                 }
+             }
 
 
 
