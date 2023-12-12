@@ -1,5 +1,6 @@
 FROM openjdk:11
-EXPOSE 8082
-ARG JAR_FILE=target/eventsProject-1.0.0.jar
-COPY target/eventsProject.jar eventsProject.jar
-ENTRYPOINT ["java","-jar","eventsProject-1.0.0.jar"]
+ARG NEXUS_URL=http://192.168.33.5:8081/repository/maven-snapshots/tn/esprit/eventsProject/1.0.0-SNAPSHOT/
+ARG JAR_FILE=eventsProject-1.0.0.jar
+ADD ${NEXUS_URL}${JAR_FILE} eventsProject-1.0.0.jar
+EXPOSE 8087
+ENTRYPOINT ["java","-jar","/eventsProject-1.0.0.jar"]
