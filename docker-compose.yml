@@ -14,13 +14,14 @@ services:
       - SpringNetwork
 
 
-  SpringEvents:
+  SpringAchat:
     image: medomrani8/eventsproject:1.0.0
     ports:
       - 8087:8087
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgresdb:5432/devops
       SPRING_DATASOURCE_USERNAME: myuser
+      SPRING_DATASOURCE_PASSWORD: iheb
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://postgresdb:5432" ]
       interval: 10s
@@ -29,5 +30,7 @@ services:
       - SpringNetwork
 volumes:
   db:
+
 networks:
   SpringNetwork:
+  
