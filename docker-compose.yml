@@ -15,7 +15,7 @@ services:
       - SpringNetwork
 
 
-  SpringAchat:
+  SpringEvents:
     image: medomrani8/eventsproject:1.0.0
     ports:
       - 8087:8087
